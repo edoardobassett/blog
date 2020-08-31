@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="mx-auto mt-4" style="width: 90%;">
+    <h1>Blog</h1>
+    <hr>
+    {% for post in post_list %}
+    <h2><a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h2>
+    <small>
+        By {{ post.author }} |&nbsp; {{ post.created_on.date }} |&nbsp;
+        Categories:&nbsp;
+        {% for category in post.categories.all %}
+        <a href="{% url 'blog_category' category.name %}">
+            {{ category.name }}
+        </a>&nbsp;
+        {% endfor %}
+    </small>
+    <p>{{ post.content | slice:":400" }}...</p>
+    {% endfor %}
+</div>
+{% endblock %}

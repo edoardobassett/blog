@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block page_content %}
+
+                    <div class="mx-auto mt-4" style="width: 90%;">
+                        <h4>Course of Life, or</h4>
+                        <h1>Curriculum Vitae</h1>
+                        <hr>
+
+                        <h2>Work Experience</h2>
+                        <ul class="timeline">
+                            {% block work_content %}
+                                {% for field in work_experience %}
+                                    <li>
+                                        {% if field.url %}
+                                        <a target="_blank" href="{{ field.url }}">{{ field.name }}</a>
+                                        {% else %}
+                                        <a style="color: #1abc9c">{{ field.name }}</a>
+                                        {% endif %}
+                                        <a style="color: #1abc9c" class="float-right">{{ field.start_date }} - {% if field.end_date %}
+                                            {{ field.end_date }} {% else %} Present {% endif %}</a>
+                                        <p style="color: #1abc9c">{{ field.sub }}</p>
+                                        <p>{{ field.description|linebreaks }}</p>
+                                    </li>
+                                {% endfor %}
+                            {% endblock %}
+                        </ul>
+
+
+                        <h2>Education</h2>
+                        <ul class="timeline">
+                            {% block education_content %}
+                                {% for field in education %}
+                                    <li>
+                                        {% if field.url %}
+                                        <a target="_blank" href="{{ field.url }}">{{ field.name }}</a>
+                                        {% else %}
+                                        <a style="color: #1abc9c">{{ field.name }}</a>
+                                        {% endif %}
+                                        <a style="color: #1abc9c" class="float-right">{{ field.start_date }} - {% if field.end_date %}
+                                            {{ field.end_date }} {% else %} Present {% endif %}</a>
+                                        <p style="color: #1abc9c">{{ field.sub }}</p>
+                                        <p>{{ field.description|linebreaks }}</p>
+                                    </li>
+                                {% endfor %}
+                            {% endblock %}
+                        </ul>
+
+
+                        <h2>Milestones</h2>
+                        <ul class="timeline">
+                            {% block milestone_content %}
+                                <li>
+                                    <a style="color: #1abc9c">Fakebusters valued 1.6mln euros as of May 2020.</a>
+                                    <p>After our 3rd round of investments, our startup was valued 1.6mln euros in May 2020.</p>
+                                </li>
+                                <li>
+                                    <a style="color: #1abc9c">Mentioned in major Italian Newspapapers for my work with Fakebusters.</a>
+                                    <p> Here are the online articles from: <a href="https://www.lanazione.it/cronaca/fake-news-come-difendersi-e-capire-le-notizie-vere-1.5127126"><b>La Nazione</b></a>, <a href="https://startupitalia.eu/128590-20200430-sbugiardare-bufala-grazie-link-ci-pensa-algoritmo-fakebusters"><b>Startup Italia</b></a> and <a href="https://www.popeconomy.tv/video/motore-anti-bufale-coronavirus?fbclid=IwAR3O_U1g9_QD23KMzJtyOtzfwjny4fyGSgmOgYeBbQ-q15xdmnFZ2nS3PnE"><b>PopEconomy</b></a>.</p>
+                                </li>
+                                <li>
+                                    <a style="color: #1abc9c">Winner of the 2019 University of Birmingham Startup Games</a>
+                                    <p>1st place for most innovative idea, 3rd place for best idea. </p>
+                                </li>
+
+                                 <li>
+                                    <a style="color: #1abc9c">Achieved top score in Maturità (A-Level equivalent)</a>
+                                    <p>I was the only person in my course to achieve a 100% score, in the period from 2015 to 2019.</p>
+                                </li>
+                            {% endblock %}
+                        </ul>
+
+
+                        <h2>Languages</h2>
+                        <ul class="timeline">
+                            {% block language_content %}
+                                    <li>
+                                        <a style="color: #1abc9c"> Italian</a>
+                                        <p> Fluent. C2 Level.</p>
+                                    </li>
+                                    <li>
+                                        <a style="color: #1abc9c"> English</a>
+                                        <p > Fluent. C2 Level.</p>
+                                    </li>
+                            {% endblock %}
+                        </ul>
+                    </div>
+{% endblock %}
